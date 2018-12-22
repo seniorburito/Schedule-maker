@@ -17,9 +17,14 @@ To run the code:
 * Run g++ -std=c++11 -o genetic genetic.cpp
 * Run ./genetic
 
+It will look like this: 
+
+![demo](../assets/Demo.gif)
+
 Work to be done:
 * Add desired professor features
 * Reformat the code to be more readable 
 * Add other heuristic search methods such as simulated annealing
 * Improve the class_conflict method (currently its a dummy that only sees if their meeting times are exactly the same)
 * Add more data to deal with 
+* Consider class requirements and prerequisites 

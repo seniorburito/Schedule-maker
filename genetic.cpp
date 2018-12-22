@@ -254,10 +254,9 @@ int main(){
             // sort the population in increasing order of fitness score 
             sort(population.begin(), population.end()); 
     
-            // if the individual having lowest fitness score ie.  
-            // 0 then we know that we have reached to the target 
-            // and break the loop 
-            if(population[0].fitness <= -32) 
+            //if it reaches a reasonable number of generations
+            // terminate the loop 
+            if(generation == 50) 
             { 
                 found = true; 
                 break; 
