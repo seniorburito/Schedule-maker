@@ -1,5 +1,5 @@
 genetic.out: genetic.cpp
-	$(CXX) --std=c++11 $< -o $@
+	$(CXX) -O3 --std=c++11 $< -o $@
 
 .PHONY: clean bench
 
