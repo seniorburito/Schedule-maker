@@ -8,3 +8,6 @@ bench: genetic.out
 
 clean:
 	rm -f *.out
+
+genetic:	genetic.cpp
+	g++ -std=c++11 -o genetic genetic.cpp
