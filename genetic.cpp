@@ -8,9 +8,9 @@ using namespace std;
 vector<string> desired_GEs = {"WRI", "ALS-A", "EIN", "WRI", "WRI", "HWC", "ORC", "SED"};
 vector<string> desired_classes = {"ENGL 185", "CSCI 241", "ART 102", "THEAT 250", "SWRK 221", "MATH 220", "BIO 123", "CHEM 121", "GERM 217", "LATIN 231"};
 #define POPULATION_SIZE 1000
-#define POINT_FOR_VALID_SCHEDULE 20
-#define POINT_FOR_DESIRED_CLASSES 3
-#define POINT_FOR_DESIRED_GES 3
+#define POINTS_FOR_VALID_SCHEDULE 20
+#define POINTS_FOR_DESIRED_CLASSES 3
+#define POINTS_FOR_DESIRED_GES 3
 
 int credit_limit = 4;
 //course object
@@ -78,7 +78,7 @@ Schedule::Schedule(vector<course> chromosome) {
     fitness = cal_fitness(); 
 }; 
   
-// Perform mating and produce new schedule based on two old schedules 
+// Perform mating and produce a new schedule based on two old schedules 
 Schedule Schedule::mate(Schedule par2, vector<course> &catalog) { 
     // chromosome for offspring 
     vector<course> child_chromosome(credit_limit);
@@ -128,7 +128,7 @@ int Schedule::compute_class_fitness(){
     for(int i = 0; i<chromosome.size(); i++){
         for(int j = 0; j < desired_classes.size(); j++){
             if(chromosome[i].course_num == desired_classes[j] && !used[j]){
-                fitness -= POINT_FOR_DESIRED_CLASSES;
+                fitness -= POINTS_FOR_DESIRED_CLASSES;
                 used[j] = true;
             }
         }
@@ -142,7 +142,7 @@ int Schedule::compute_GE_fitness(){
     for(int i = 0; i<chromosome.size(); i++){
         for(int j = 0; j < desired_GEs.size(); j++){
             if(chromosome[i].GE == desired_GEs[j] && !used[j]){
-                fitness -= POINT_FOR_DESIRED_GES;
+                fitness -= POINTS_FOR_DESIRED_GES;
                 used[j] = true;
             }
         }
@@ -150,14 +150,12 @@ int Schedule::compute_GE_fitness(){
     return fitness;
 }  
 
-// Calculate fittness score, it is the number of 
-// characters in string which differ from target 
-// string. 
+// Calculate fittness score (lass_fitness + GE_fitness + is_valid)
 int Schedule::cal_fitness() { 
     int fitness = 0; 
     
-    if(is_valid()) fitness -= POINT_FOR_VALID_SCHEDULE;
-    else fitness += POINT_FOR_VALID_SCHEDULE;
+    if(is_valid()) fitness -= POINTS_FOR_VALID_SCHEDULE;
+    else fitness += POINTS_FOR_VALID_SCHEDULE;
 
     fitness += compute_class_fitness() + compute_GE_fitness();
 
@@ -233,7 +231,7 @@ vector<course> genetic_algorithm(){
         // Otherwise generate new offsprings for new generation 
         vector<Schedule> new_generation; 
 
-        // Perform Elitism, that mean 10% of fittest population 
+        // Perform Elitism, that means 10% of fittest population 
         // goes to the next generation 
         int s = (10*POPULATION_SIZE)/100; 
         for(int i = 0;i<s;i++) 
