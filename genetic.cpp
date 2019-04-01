@@ -266,7 +266,6 @@ int main(){
 
     vector<vector<course>> top10;
     for(int i = 0; i<10; i++){
-    	cout << "Start\n";
         top10.push_back(genetic_algorithm());
     }
 
