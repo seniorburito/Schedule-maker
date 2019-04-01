@@ -257,7 +257,8 @@ vector<course> genetic_algorithm(){
         cout<< "Fitness: "<< population[0].fitness << "\n"; 
 
         generation++; 
-    } 
+    }
+    return population[0].chromosome; 
 }
 int main(){
     srand((unsigned)(time(0))); 
@@ -265,6 +266,7 @@ int main(){
 
     vector<vector<course>> top10;
     for(int i = 0; i<10; i++){
+    	cout << "Start\n";
         top10.push_back(genetic_algorithm());
     }
 
