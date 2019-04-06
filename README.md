@@ -14,8 +14,8 @@ Here, each course represents a gene and each full schedule represents a genome
 
 To run the code:
 * Download and cd into the folder containing the genetic.cpp file
-* Run g++ -std=c++11 -o genetic genetic.cpp
-* Run ./genetic
+* Run make genetic.out
+* Run ./genetic.out
 
 It will look like this: 
 
@@ -23,8 +23,10 @@ It will look like this:
 
 Work to be done:
 * Add desired professor features
-* Reformat the code to be more readable 
+* Reorganize the structure of codes into smaller files
 * Add other heuristic search methods such as simulated annealing
 * Improve the class_conflict method (currently its a dummy that only sees if their meeting times are exactly the same)
 * Add more data to deal with 
 * Consider class requirements and prerequisites 
+* Fetch real-time result from the website
+* Create a simple API for users
